@@ -681,5 +681,5 @@ def create_relation_info_desc(relation_option, people_info_1, people_info_2):
 
 
 if __name__ == "__main__":
-    for a in range(20):
+    for a in range(10):
         print(zh_fake.credit_card_number())
