@@ -37,6 +37,8 @@ class FileGeneration(QtCore.QThread):
             people_info['job'] = f'职业：{nlp_tool.create_job()}'  # 职业
         if self.client_info.get('email'):
             people_info['email'] = f'邮箱：{nlp_tool.create_email()}'  # 邮箱
+        if self.client_info.get('native_place'):
+            people_info['native_place'] = f'籍贯：{nlp_tool.create_domicile()}'  # 籍贯
         if self.client_info.get('domicile'):
             people_info['domicile'] = f'户籍地：{nlp_tool.create_domicile()}'  # 户籍地
         if self.client_info.get('residence'):
@@ -45,6 +47,8 @@ class FileGeneration(QtCore.QThread):
             people_info['qq'] = f'QQ：{nlp_tool.create_qq()}'  # QQ号
         if self.client_info.get('wechat'):
             people_info['wechat'] = f'微信：{nlp_tool.create_wei_xin()}'  # 微信号
+        if self.client_info.get('wechat_nickname'):
+            people_info['wechat_nickname'] = nlp_tool.create_wechat_nickname_desc()  # 微信昵称
         if self.client_info.get('twitter'):
             people_info['twitter'] = f'推特：{nlp_tool.create_twitter()}'  # 推特号
         if self.client_info.get('bank_card'):
@@ -123,6 +127,8 @@ class FileGeneration(QtCore.QThread):
             people_info['job'] = f'职业：{nlp_tool.create_job()}'  # 职业
         if self.client_info.get('email'):
             people_info['email'] = f'邮箱：{nlp_tool.create_email()}'  # 邮箱
+        if self.client_info.get('native_place'):
+            people_info['native_place'] = f'籍贯：{nlp_tool.create_domicile()}'  # 籍贯
         if self.client_info.get('domicile'):
             people_info['domicile'] = f'户籍地：{nlp_tool.create_domicile()}'  # 户籍地
         if self.client_info.get('residence'):
@@ -131,6 +137,8 @@ class FileGeneration(QtCore.QThread):
             people_info['qq'] = f'QQ：{nlp_tool.create_qq()}'  # QQ号
         if self.client_info.get('wechat'):
             people_info['wechat'] = f'微信：{nlp_tool.create_wei_xin()}'  # 微信号
+        if self.client_info.get('wechat_nickname'):
+            people_info['wechat_nickname'] = nlp_tool.create_wechat_nickname_desc()  # 微信昵称
         if self.client_info.get('twitter'):
             people_info['twitter'] = f'推特：{nlp_tool.create_twitter()}'  # 推特号
         if self.client_info.get('bank_card'):

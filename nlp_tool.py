@@ -16,6 +16,7 @@ from source_file.education_level import education_level_list
 from source_file.political_status import political_status_list
 from source_file.brigade import brigade_list
 from source_file.gat_region import gat_region
+from source_file.wechat_nickname import wechat_nickname_list
 
 
 zh_fake = Faker('zh_CN')
@@ -56,6 +57,22 @@ def create_wei_xin():
     account_postfix = ''.join(account_postfix_list)
     wei_xin_account = account_prefix + account_postfix
     return wei_xin_account
+
+
+def create_wechat_nickname():
+    """生成微信昵称"""
+    wechat_nickname = random.choice(wechat_nickname_list)
+    return wechat_nickname
+
+
+wechat_nickname_prefix_list = ['微信昵称', '昵称']
+
+
+def create_wechat_nickname_desc():
+    """生成微信昵称描述"""
+    wechat_nick_name_prefix = random.choice(wechat_nickname_prefix_list)
+    wechat_nickname_desc = f"{wechat_nick_name_prefix}：{create_wechat_nickname()}"
+    return wechat_nickname_desc
 
 
 def create_twitter():
@@ -119,57 +136,6 @@ def create_job():
     return job
 
 
-def create_year() -> int:
-    """
-    生成年份
-    :return: 年份
-    """
-    year = random.randint(1900, 2019)
-    return year
-
-
-def create_month() -> str:
-    """
-    生成月份
-    :return: 月份
-    """
-    month = random.randint(1, 12)
-    if month < 10:
-        month = "0" + str(month)
-    else:
-        month = str(month)
-    return month
-
-
-def create_year_month_day():
-    """
-    生成日期（年月日）
-    :return: 日期（年+月+日）
-    """
-    year = create_year()
-    month = create_month()
-    if int(month) in (1, 3, 5, 7, 8, 10, 12):
-        end_day = 31
-    elif int(month) == 2:
-        if year % 4 == 0:
-            if year % 100 == 0:
-                if year % 400 == 0:
-                    end_day = 29
-                else:
-                    end_day = 28
-            else:
-                end_day = 29
-        else:
-            end_day = 28
-    else:
-        end_day = 30
-    day = random.randint(1, end_day)
-    if day < 10:
-        day = "0" + str(day)
-    date_result = str(year) + "年" + str(month) + "月" + str(day) + "日"
-    return date_result
-
-
 def create_id_card():
     """生成国内身份证"""
     id_card = zh_fake.ssn()
@@ -194,7 +160,7 @@ def create_gender():
 
 
 def create_domicile():
-    """生成户籍地址"""
+    """生成籍贯、户籍地"""
     domicile_list = list(identity_card_prefix.values())
     domicile_list.extend(gat_region)
     domicile = random.choice(domicile_list)
@@ -681,5 +647,5 @@ def create_relation_info_desc(relation_option, people_info_1, people_info_2):
 
 
 if __name__ == "__main__":
-    for a in range(10):
-        print(zh_fake.credit_card_number())
+    result = create_wechat_nickname_desc()
+    print(result)
